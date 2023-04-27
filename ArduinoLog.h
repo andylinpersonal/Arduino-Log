@@ -46,20 +46,20 @@ typedef void (*printfunction)(Print*, int);
 #define LOG_LEVEL_TRACE   5
 #define LOG_LEVEL_VERBOSE 6
 
-#define CR "\n"
-#define LF "\r"
-#define NL "\n\r"
+#define ARDUINO_LOG_CR "\n"
+#define ARDUINO_LOG_LF "\r"
+#define ARDUINO_LOG_NL "\n\r"
 #define LOGGING_VERSION 1_0_4
 
 /**
- * ArduinoLog is a minimalistic framework to help the programmer output log statements to an output of choice, 
+ * ArduinoLog is a minimalistic framework to help the programmer output log statements to an output of choice,
  * fashioned after extensive logging libraries such as log4cpp ,log4j and log4net. In case of problems with an
- * application, it is helpful to enable logging so that the problem can be located. ArduinoLog is designed so 
- * that log statements can remain in the code with minimal performance cost. In order to facilitate this the 
+ * application, it is helpful to enable logging so that the problem can be located. ArduinoLog is designed so
+ * that log statements can remain in the code with minimal performance cost. In order to facilitate this the
  * loglevel can be adjusted, and (if your code is completely tested) all logging code can be compiled out.
- * 
+ *
  * ---- Wildcards
- * 
+ *
  * %s	display as string (char*)
  * %S    display as string from flash memory (__FlashStringHelper* or char[] PROGMEM)
  * %c	display as single character
@@ -74,10 +74,10 @@ typedef void (*printfunction)(Print*, int);
  * %t	display as boolean value "t" or "f"
  * %T	display as boolean value "true" or "false"
  * %D,%F display as double value
- * %p    display a  printable object 
- * 
+ * %p    display a  printable object
+ *
  * ---- Loglevels
- * 
+ *
  * 0 - LOG_LEVEL_SILENT     no output
  * 1 - LOG_LEVEL_FATAL      fatal errors
  * 2 - LOG_LEVEL_ERROR      all errors
@@ -108,7 +108,7 @@ public:
 	 * Initializing, must be called as first. Note that if you use
 	 * this variant of Init, you need to initialize the baud rate
 	 * yourself, if printer happens to be a serial port.
-	 * 
+	 *
 	 * \param level - logging levels <= this will be logged.
 	 * \param printer - place that logging output will be sent to.
 	 * \return void
@@ -118,7 +118,7 @@ public:
 
 	/**
 	 * Set the log level.
-	 * 
+	 *
 	 * \param level - The new log level.
 	 * \return void
 	 */
@@ -133,7 +133,7 @@ public:
 
 	/**
 	 * Set whether to show the log level.
-	 * 
+	 *
 	 * \param showLevel - true if the log level should be shown for each log
 	 *                    false otherwise.
 	 * \return void
@@ -142,7 +142,7 @@ public:
 
 	/**
 	 * Get whether the log level is shown during logging
-	 * 
+	 *
 	 * \return true if the log level is be shown for each log
 	 *         false otherwise.
 	 */
@@ -150,7 +150,7 @@ public:
 
 	/**
 	 * Sets a function to be called before each log command.
-	 * 
+	 *
 	 * \param f - The function to be called
 	 * \return void
 	 */
@@ -165,7 +165,7 @@ public:
 
 	/**
 	 * Sets a function to be called after each log command.
-	 * 
+	 *
 	 * \param f - The function to be called
 	 * \return void
 	 */
@@ -183,7 +183,7 @@ public:
 	 * F: followed by original message
 	 * Fatal error messages are printed out at
 	 * loglevels >= LOG_LEVEL_FATAL
-	 * 
+	 *
 	 * \param msg format string to output
 	 * \param ... any number of variables
 	 * \return void
@@ -205,7 +205,7 @@ public:
 	 * E: followed by original message
 	 * Error messages are printed out at
 	 * loglevels >= LOG_LEVEL_ERROR
-	 * 
+	 *
 	 * \param msg format string to output
 	 * \param ... any number of variables
 	 * \return void
@@ -215,18 +215,18 @@ public:
     printLevel(LOG_LEVEL_ERROR, false, msg, args...);
 #endif
   }
-  
+
    template <class T, typename... Args> void errorln(T msg, Args... args){
 #ifndef DISABLE_LOGGING
     printLevel(LOG_LEVEL_ERROR, true, msg, args...);
 #endif
-  } 
+  }
 	/**
 	 * Output a warning message. Output message contains
 	 * W: followed by original message
 	 * Warning messages are printed out at
 	 * loglevels >= LOG_LEVEL_WARNING
-	 * 
+	 *
 	 * \param msg format string to output
 	 * \param ... any number of variables
 	 * \return void
@@ -236,19 +236,19 @@ public:
     printLevel(LOG_LEVEL_WARNING, false, msg, args...);
 #endif
   }
-  
+
    template <class T, typename... Args> void warningln(T msg, Args...args){
 #ifndef DISABLE_LOGGING
     printLevel(LOG_LEVEL_WARNING, true, msg, args...);
 #endif
-  } 
+  }
 
 	/**
 	 * Output a notice message. Output message contains
 	 * N: followed by original message
 	 * Notice messages are printed out at
 	 * loglevels >= LOG_LEVEL_NOTICE
-	 * 
+	 *
 	 * \param msg format string to output
 	 * \param ... any number of variables
 	 * \return void
@@ -258,12 +258,12 @@ public:
     printLevel(LOG_LEVEL_NOTICE, false, msg, args...);
 #endif
   }
-  
+
   template <class T, typename... Args> void noticeln(T msg, Args...args){
 #ifndef DISABLE_LOGGING
     printLevel(LOG_LEVEL_NOTICE, true, msg, args...);
 #endif
-  }  
+  }
 
   template <class T, typename... Args> void info(T msg, Args...args) {
 #ifndef DISABLE_LOGGING
@@ -282,7 +282,7 @@ public:
 	 * N: followed by original message
 	 * Trace messages are printed out at
 	 * loglevels >= LOG_LEVEL_TRACE
-	 * 
+	 *
 	 * \param msg format string to output
 	 * \param ... any number of variables
 	 * \return void
@@ -304,7 +304,7 @@ public:
 	 * V: followed by original message
 	 * Debug messages are printed out at
 	 * loglevels >= LOG_LEVEL_VERBOSE
-	 * 
+	 *
 	 * \param msg format string to output
 	 * \param ... any number of variables
 	 * \return void
@@ -342,11 +342,11 @@ private:
 		{
 			return;
 		}
-		if (level < LOG_LEVEL_SILENT) 
+		if (level < LOG_LEVEL_SILENT)
 		{
 			level = LOG_LEVEL_SILENT;
 		}
-			
+
 
 		if (_prefix != NULL)
 		{
@@ -369,7 +369,7 @@ private:
 		}
 		if (cr)
 		{
-		    _logOutput->print(CR);
+		    _logOutput->print(ARDUINO_LOG_CR);
 		}
 #endif
 	}

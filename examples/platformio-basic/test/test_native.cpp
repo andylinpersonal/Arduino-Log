@@ -128,7 +128,7 @@ void test_int_values() {
   reset_output();
   int int_value1 = 173;
   int int_value2 = 65536;
-  Log.notice("Log as Info with integer values : %d, %d" CR, int_value1,
+  Log.notice("Log as Info with integer values : %d, %d" ARDUINO_LOG_CR, int_value1,
              int_value2);
   std::stringstream expected_output;
   expected_output << "N: Log as Info with integer values : 173, 65536\n";
@@ -139,9 +139,9 @@ void test_int_hex_values() {
   reset_output();
   int int_value1 = 152;
   int int_value2 = 65010;
-  Log.notice(F("Log as Info with hex values     : %x, %X" CR), int_value1,
+  Log.notice(F("Log as Info with hex values     : %x, %X" ARDUINO_LOG_CR), int_value1,
              int_value1);
-  Log.notice("Log as Info with hex values     : %x, %X" CR, int_value2,
+  Log.notice("Log as Info with hex values     : %x, %X" ARDUINO_LOG_CR, int_value2,
              int_value2);
   std::stringstream expected_output;
   expected_output << "N: Log as Info with hex values     : 98, 0x0098\n"
@@ -153,7 +153,7 @@ void test_int_binary_values() {
   reset_output();
   int int_value1 = 2218;
   int int_value2 = 17814;
-  Log.notice(F("Log as Info with binary values  : %b, %B" CR), int_value1,
+  Log.notice(F("Log as Info with binary values  : %b, %B" ARDUINO_LOG_CR), int_value1,
              int_value2);
   std::stringstream expected_output;
   expected_output << "N: Log as Info with binary values  : 100010101010, "
@@ -164,7 +164,7 @@ void test_long_values() {
   reset_output();
   long long_value1 = 34359738368;
   long long_value2 = 274877906944;
-  Log.notice(F("Log as Info with long values    : %l, %l" CR), long_value1,
+  Log.notice(F("Log as Info with long values    : %l, %l" ARDUINO_LOG_CR), long_value1,
              long_value2);
   std::stringstream expected_output;
   expected_output << "N: Log as Info with long values    : "
@@ -176,9 +176,9 @@ void test_bool_values() {
   reset_output();
   bool true_value = true;
   bool false_value = false;
-  Log.notice("Log as Info with bool values    : %t, %T" CR, true_value,
+  Log.notice("Log as Info with bool values    : %t, %T" ARDUINO_LOG_CR, true_value,
              true_value);
-  Log.notice("Log as Info with bool values    : %t, %T" CR, false_value,
+  Log.notice("Log as Info with bool values    : %t, %T" ARDUINO_LOG_CR, false_value,
              false_value);
   std::stringstream expected_output;
   expected_output << "N: Log as Info with bool values    : T, true\n";
@@ -189,7 +189,7 @@ void test_bool_values() {
 void test_char_string_values() {
   reset_output();
   const char *charArray = "this is a string";
-  Log.notice(F("Log as Info with string value   : %s" CR), charArray);
+  Log.notice(F("Log as Info with string value   : %s" ARDUINO_LOG_CR), charArray);
   std::stringstream expected_output;
   expected_output << "N: Log as Info with string value   : this is a string\n";
   TEST_ASSERT_EQUAL_STRING_STREAM(expected_output, output_);
@@ -201,7 +201,7 @@ void test_flash_string_values() {
   const __FlashStringHelper *flashCharArray2 = F("this is a string");
 
   const char flashCharArray1[] PROGMEM = "this is a string";
-  Log.notice("Log as Info with Flash string value   : %S" CR, flashCharArray1);
+  Log.notice("Log as Info with Flash string value   : %S" ARDUINO_LOG_CR, flashCharArray1);
   std::stringstream expected_output;
   expected_output
       << "N: Log as Info with Flash string value   : this is a string\n";
@@ -211,7 +211,7 @@ void test_flash_string_values() {
 void test_string_values() {
   reset_output();
   String stringValue1 = "this is a string";
-  Log.notice("Log as Info with string value   : %s" CR, stringValue1.c_str());
+  Log.notice("Log as Info with string value   : %s" ARDUINO_LOG_CR, stringValue1.c_str());
   std::stringstream expected_output;
   expected_output << "N: Log as Info with string value   : this is a string\n";
   TEST_ASSERT_EQUAL_STRING_STREAM(expected_output, output_);
@@ -220,8 +220,8 @@ void test_string_values() {
 void test_float_values() {
   reset_output();
   float float_value = 12.34;
-  Log.notice(F("Log as Info with float value   : %F" CR), float_value);
-  Log.notice("Log as Info with float value   : %F" CR, float_value);
+  Log.notice(F("Log as Info with float value   : %F" ARDUINO_LOG_CR), float_value);
+  Log.notice("Log as Info with float value   : %F" ARDUINO_LOG_CR, float_value);
   std::stringstream expected_output;
   expected_output << "N: Log as Info with float value   : 12.34\n"
                   << "N: Log as Info with float value   : 12.34\n";
@@ -231,9 +231,9 @@ void test_float_values() {
 void test_double_values() {
   reset_output();
   double double_value = 1234.56789;
-  // Log.notice(F("%D" CR), double_value);
-  Log.notice(F("Log as Info with double value   : %D" CR), double_value);
-  Log.notice("Log as Info with double value   : %D" CR, double_value);
+  // Log.notice(F("%D" ARDUINO_LOG_CR), double_value);
+  Log.notice(F("Log as Info with double value   : %D" ARDUINO_LOG_CR), double_value);
+  Log.notice("Log as Info with double value   : %D" ARDUINO_LOG_CR, double_value);
   std::stringstream expected_output;
   expected_output << "N: Log as Info with double value   : 1234.57\n"
                   << "N: Log as Info with double value   : 1234.57\n";
@@ -248,7 +248,7 @@ void test_mixed_values() {
   long long_value2 = 68719476743;
   bool true_value = true;
   bool false_value = false;
-  Log.notice(F("Log as Debug with mixed values  : %d, %d, %l, %l, %t, %T" CR),
+  Log.notice(F("Log as Debug with mixed values  : %d, %d, %l, %l, %t, %T" ARDUINO_LOG_CR),
              int_value1, int_value2, long_value1, long_value2, true_value,
              false_value);
   std::stringstream expected_output;
@@ -262,16 +262,16 @@ void test_log_levels() {
   reset_output();
   bool true_value = true;
   bool false_value = false;
-  Log.trace("Log as Trace with bool value    : %T" CR, true_value);
+  Log.trace("Log as Trace with bool value    : %T" ARDUINO_LOG_CR, true_value);
   Log.traceln("Log as Trace with bool value    : %T", false_value);
-  Log.warning("Log as Warning with bool value  : %T" CR, true_value);
+  Log.warning("Log as Warning with bool value  : %T" ARDUINO_LOG_CR, true_value);
   Log.warningln("Log as Warning with bool value  : %T", false_value);
-  Log.error("Log as Error with bool value    : %T" CR, true_value);
+  Log.error("Log as Error with bool value    : %T" ARDUINO_LOG_CR, true_value);
   Log.errorln("Log as Error with bool value    : %T", false_value);
-  Log.fatal("Log as Fatal with bool value    : %T" CR, true_value);
+  Log.fatal("Log as Fatal with bool value    : %T" ARDUINO_LOG_CR, true_value);
   Log.fatalln("Log as Fatal with bool value    : %T", false_value);
   Log.verboseln(F("Log as Verbose with bool value   : %T"), true_value);
-  Log.verbose(F("Log as Verbose with bool value   : %T" CR), false_value);
+  Log.verbose(F("Log as Verbose with bool value   : %T" ARDUINO_LOG_CR), false_value);
   std::stringstream expected_output;
   expected_output << "T: Log as Trace with bool value    : true\n"
                      "T: Log as Trace with bool value    : false\n"

@@ -38,9 +38,9 @@ void setup() {
 
     //Start logging
 
-    Log.notice(F(CR "******************************************" CR));                     // Info string with Newline
-    Log.notice(  "***          Logging example                " CR);                       // Info string in flash memory
-    Log.notice(F("******************* ")); Log.notice("*********************** " CR);      // two info strings without newline will end up on same line
+    Log.notice(F(ARDUINO_LOG_CR "******************************************" ARDUINO_LOG_CR));                     // Info string with Newline
+    Log.notice(  "***          Logging example                " ARDUINO_LOG_CR);                       // Info string in flash memory
+    Log.notice(F("******************* ")); Log.notice("*********************** " ARDUINO_LOG_CR);      // two info strings without newline will end up on same line
 }
 
 void loop() {
@@ -55,36 +55,36 @@ void loop() {
     doubleValue= 1234.56789;
 
 
-    Log.notice   (  "Log as Info with integer values : %d, %d" CR                  , intValue1,  intValue2);
-    Log.notice   (F("Log as Info with hex values     : %x, %X" CR                 ), intValue1,  intValue1);
-    Log.notice   (  "Log as Info with hex values     : %x, %X" CR                  , intValue2,  intValue2);
-    Log.notice   (F("Log as Info with binary values  : %b, %B" CR                 ), intValue1,  intValue1);
-    Log.notice   (  "Log as Info with binary values  : %b, %B" CR                  , intValue2,  intValue2);
-    Log.notice   (F("Log as Info with long values    : %l, %l" CR                 ), longValue1, longValue2);
-    Log.notice   (  "Log as Info with bool values    : %t, %T" CR                  , boolValue1, boolValue2);
-    Log.notice   (F("Log as Info with char value     : %c" CR                     ), charArray[0]);
-    Log.notice   (  "Log as Info with char value     : %C" CR                      , charNotPrintable);
-    Log.notice   (F("Log as Info with string value   : %s" CR                     ), charArray);
-    Log.notice   (  "Log as Info with Flash string value   : %S" CR                , flashCharArray1);
-    Log.notice   (  "Log as Info with string value   : %s" CR                      , stringValue1.c_str());
-    Log.notice   (F("Log as Info with float value   : %F" CR                      ), floatValue);
-    Log.notice   (  "Log as Info with float value   : %F" CR                       , floatValue);
-    Log.notice   (F("Log as Info with double value   : %D" CR                     ), doubleValue);
-    Log.notice   (  "Log as Info with double value   : %D" CR                      , doubleValue);
-    Log.notice   (F("Log as Debug with mixed values  : %d, %d, %l, %l, %t, %T" CR ), intValue1 , intValue2 ,
-                                                                                     longValue1, longValue2, 
-                                                                                     boolValue1, boolValue2);     
-    Log.trace    (  "Log as Trace with bool value    : %T" CR                      , boolValue1);
+    Log.notice   (  "Log as Info with integer values : %d, %d" ARDUINO_LOG_CR                  , intValue1,  intValue2);
+    Log.notice   (F("Log as Info with hex values     : %x, %X" ARDUINO_LOG_CR                 ), intValue1,  intValue1);
+    Log.notice   (  "Log as Info with hex values     : %x, %X" ARDUINO_LOG_CR                  , intValue2,  intValue2);
+    Log.notice   (F("Log as Info with binary values  : %b, %B" ARDUINO_LOG_CR                 ), intValue1,  intValue1);
+    Log.notice   (  "Log as Info with binary values  : %b, %B" ARDUINO_LOG_CR                  , intValue2,  intValue2);
+    Log.notice   (F("Log as Info with long values    : %l, %l" ARDUINO_LOG_CR                 ), longValue1, longValue2);
+    Log.notice   (  "Log as Info with bool values    : %t, %T" ARDUINO_LOG_CR                  , boolValue1, boolValue2);
+    Log.notice   (F("Log as Info with char value     : %c" ARDUINO_LOG_CR                     ), charArray[0]);
+    Log.notice   (  "Log as Info with char value     : %C" ARDUINO_LOG_CR                      , charNotPrintable);
+    Log.notice   (F("Log as Info with string value   : %s" ARDUINO_LOG_CR                     ), charArray);
+    Log.notice   (  "Log as Info with Flash string value   : %S" ARDUINO_LOG_CR                , flashCharArray1);
+    Log.notice   (  "Log as Info with string value   : %s" ARDUINO_LOG_CR                      , stringValue1.c_str());
+    Log.notice   (F("Log as Info with float value   : %F" ARDUINO_LOG_CR                      ), floatValue);
+    Log.notice   (  "Log as Info with float value   : %F" ARDUINO_LOG_CR                       , floatValue);
+    Log.notice   (F("Log as Info with double value   : %D" ARDUINO_LOG_CR                     ), doubleValue);
+    Log.notice   (  "Log as Info with double value   : %D" ARDUINO_LOG_CR                      , doubleValue);
+    Log.notice   (F("Log as Debug with mixed values  : %d, %d, %l, %l, %t, %T" ARDUINO_LOG_CR ), intValue1 , intValue2 ,
+                                                                                     longValue1, longValue2,
+                                                                                     boolValue1, boolValue2);
+    Log.trace    (  "Log as Trace with bool value    : %T" ARDUINO_LOG_CR                      , boolValue1);
     Log.traceln  (  "Log as Trace with bool value    : %T"                         , boolValue1);
-    Log.warning  (  "Log as Warning with bool value  : %T" CR                      , boolValue1);
+    Log.warning  (  "Log as Warning with bool value  : %T" ARDUINO_LOG_CR                      , boolValue1);
     Log.warningln(  "Log as Warning with bool value  : %T"                         , boolValue1);
-    Log.error    (  "Log as Error with bool value    : %T" CR                      , boolValue1);
+    Log.error    (  "Log as Error with bool value    : %T" ARDUINO_LOG_CR                      , boolValue1);
     Log.errorln  (  "Log as Error with bool value    : %T"                         , boolValue1);
-    Log.fatal    (  "Log as Fatal with bool value    : %T" CR                      , boolValue1);
+    Log.fatal    (  "Log as Fatal with bool value    : %T" ARDUINO_LOG_CR                      , boolValue1);
     Log.fatalln  (  "Log as Fatal with bool value    : %T"                         , boolValue1);
     Log.verboseln(F("Log as Verbose with bool value   : %T"                       ), boolValue2);
-    Log.verbose  (F("Log as Verbose with bool value   : %T" CR                    ), boolValue2);
+    Log.verbose  (F("Log as Verbose with bool value   : %T" ARDUINO_LOG_CR                    ), boolValue2);
 
-    
+
     delay(5000);
 }

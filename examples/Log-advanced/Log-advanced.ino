@@ -23,9 +23,9 @@ void setup() {
     Serial.begin(9600);
     while(!Serial && !Serial.available()){}
 
-    
+
     Log.setPrefix(printPrefix); // set prefix similar to NLog
-    Log.setSuffix(printSuffix); // set suffix 
+    Log.setSuffix(printSuffix); // set suffix
     Log.begin(LOG_LEVEL_VERBOSE, &Serial);
     Log.setShowLevel(false);    // Do not show loglevel, we will do this in the prefix
 }
@@ -36,11 +36,11 @@ void loop() {
     //__FlashStringHelper cannot be declared outside a function
     const __FlashStringHelper * flashCharArray2 = F("this is a string");
 
-    Log.notice     (  "Log global Flash string  value : %S" CR, flashCharArray1     );
-    Log.traceln    (  "Log local Flash string value   : %S" CR, flashCharArray2     );
-    Log.notice     (  "Log string value               : %s" CR, stringValue1.c_str());
+    Log.notice     (  "Log global Flash string  value : %S" ARDUINO_LOG_CR, flashCharArray1     );
+    Log.traceln    (  "Log local Flash string value   : %S" ARDUINO_LOG_CR, flashCharArray2     );
+    Log.notice     (  "Log string value               : %s" ARDUINO_LOG_CR, stringValue1.c_str());
     Log.verboseln  (F("Log ip adress                  : %p")  , ipAdress            );
-       
+
     delay(5000);
 }
 
@@ -86,7 +86,7 @@ void printLogLevel(Print* _logOutput, int logLevel) {
         case 4:_logOutput->print("INFO "   ); break;
         case 5:_logOutput->print("TRACE "  ); break;
         case 6:_logOutput->print("VERBOSE "); break;
-    }   
+    }
 }
 
 void printSuffix(Print* _logOutput, int logLevel) {
